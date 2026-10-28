@@ -1,0 +1,51 @@
+{
+  "counts": {
+    "rows": 427,
+    "unique": 412,
+    "duplicateRows": 15,
+    "structuralParser": 379,
+    "parser": 374,
+    "hint": 33,
+    "temporal": 5,
+    "tagMismatches": 38,
+    "mergedJuly2": 184
+  },
+  "duplicateObjectsMatch": true,
+  "dedupeOutcomes": [
+    true,
+    false,
+    false,
+    true,
+    false
+  ],
+  "htmlChecks": {
+    "index": {
+      "bytes": 4606,
+      "title": "Support knowledge base"
+    },
+    "triage": {
+      "bytes": 7693,
+      "title": "Triage: duplicate reports"
+    },
+    "decision": {
+      "bytes": 3420,
+      "title": "0001 · Duplicates share a subject line"
+    },
+    "incident": {
+      "bytes": 12582,
+      "title": "#4471 · dates parse mm/dd in eu locales"
+    },
+    "review": {
+      "bytes": 20556,
+      "title": "#4471 review · three date problems"
+    }
+  },
+  "semanticChecks": {
+    "incidentCauseTable": true,
+    "temporalFootnote": true,
+    "reviewPartition": true,
+    "signedReview": true,
+    "signatureMatchesFrontmatter": true,
+    "staleTriageAndDecision": true
+  }
+}

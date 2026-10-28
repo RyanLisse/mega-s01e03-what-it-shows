@@ -1,0 +1,87 @@
+---
+layout: runbook
+title: '#4471 review · three date problems'
+owner: RyanLisse
+status: review
+reviewed: 2026-10-28
+signature: 'RyanLisse · Codex · S01E03 · 2026-10-28'
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import DedupeExplorer from '#lib/kb/DedupeExplorer.svelte';
+  import Findings from '#lib/kb/Findings.svelte';
+  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+
+  const signature = 'RyanLisse · Codex · S01E03 · 2026-10-28';
+</script>
+
+The [incident page](/kb/incidents/4471) says every report belongs to one parser bug. The
+exported data supports three tickets. Two have a known mechanism. The third holds temporal
+anomalies that need investigation before anyone names a cause.
+
+<Findings />
+
+## What the current page shows
+
+<CauseTable ticket={4471} />
+
+The current table routes every report through `causeOf`. That function groups reports by the
+tenant's locale, form version, and channel. It does not inspect the report body. The table
+therefore places the temporal anomalies under `parser` and footnotes them there.
+
+The review separates those anomalies from the supported parser group. This is an evidence
+boundary, not a new root-cause claim.
+
+## The three tickets
+
+### The shared parser reads day-first dates as month-first
+
+This group covers the reports whose dates swap the day and month. It spans app, email, and
+form channels. The mechanism matches `causeOf`: a day-first tenant reaches the shared
+month-first parser.
+
+### Booking v3 gives a month-first hint to day-first tenants
+
+This group covers form reports from day-first tenants that use `booking-v3`. The form tells
+people to enter `MM/DD/YYYY`, then the product reads the date in the tenant's day-first
+locale. The hint and the parser disagree.
+
+### Temporal anomalies need their own investigation
+
+The desk marked five report IDs for special reading. Four describe an apparent one-day or
+time-zone symptom. `R-41236` says an invite arrived before the booking existed. That symptom
+does not establish the same failure mechanism.
+
+Keep these reports together only as an investigation queue. Split the ticket again if runtime
+evidence shows more than one cause.
+
+## Why subject matching merged different problems
+
+The accepted [subject-line decision](/kb/decisions/0001-dedupe-by-subject) tells the desk to
+merge reports when their normalized subjects match. The live explorer uses cause instead:
+
+<DedupeExplorer />
+
+Its five cases show the mismatch:
+
+- App and email reports from `kettle.books` have different subjects but the same parser cause.
+- Form and app reports from `alder.physio` share a subject but have different causes.
+- Form reports from `copper.studio` and `morrow.tax` share a subject but have different causes.
+- Form reports from `pale.harbour` and `alder.physio` have different subjects but the same hint cause.
+- Reports for an unknown tenant have no supported cause, even when their subjects match.
+
+Keep decision 0001 as history. Replace it with a new decision that merges only after the desk
+has evidence that two reports share a cause. Put reports with insufficient evidence in an
+investigation ticket.
+
+## The queue kept moving
+
+<QueueTimeline ticket={4471} />
+
+The large merged bar in the week of 29 June records a desk batch on 2 July. It does not mark
+the incident's start, a production change, or a recovery. Reports continued to arrive and the
+desk continued to merge them through the export date.
+
+<RenderStamp {signature} />
