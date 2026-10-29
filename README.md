@@ -4,9 +4,9 @@ This repository preserves the supplied support knowledge-base export and adds a 
 
 The tickets use the desk's exported counts of 379 parser reports and 33 booking-hint reports.
 A third ticket investigates four date-boundary reports. A fourth investigates one
-invite-ordering report. All five are already included in the parser count, so do not add them
-again. The snapshot has 412 unique reports. After separating the unresolved five, 374 reports
-remain classified as parser. That classification does not prove one cause for every report.
+invite-ordering report. The exported parser row is archived evidence, not the final parser
+ticket's coverage. The parser ticket covers the remaining 374 reports. Its classification does
+not prove one cause for every report. The four final tickets assign each unique report once.
 
 - Read the [review source](src/routes/kb/incidents/4471-review/+page.svx).
 - Open the [rendered review](rendered/review.html) in a browser. This file is a static snapshot without client-side interaction.

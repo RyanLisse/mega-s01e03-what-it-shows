@@ -7,12 +7,10 @@ swap the day and month for tenants that use a day-first locale.
 
 ## Reports covered
 
-This ticket covers 379 unique reports in the desk's exported parser view from 4 October.
-The count includes five temporal reports that the desk files under parser and footnotes as
-one-day moves. Four are also tracked in investigation ticket #3, and one is tracked in
-investigation ticket #4. The ticket counts therefore overlap. The remaining 374 reports are
-classified as parser. That classification is not body-by-body proof of one root cause. The 33
-hint reports are separate.
+This problem ticket covers 374 unique reports in the 4 October export. The archived desk view
+classifies 379 reports as parser. That row includes five reports now assigned only to
+investigation tickets #3 and #4. The remaining 374 are classified as parser, but that
+classification is not body-by-body proof of one root cause. The 33 hint reports are separate.
 
 Examples include:
 
@@ -27,8 +25,8 @@ The evidence comes from `src/lib/data/reports-4471.json`, the tenant records und
 
 `causeOf` classifies a report as `parser` when the tenant uses a day-first locale and the
 booking-v3 hint mismatch does not apply. The example reports show the day-and-month swap. The
-five temporal reports remain unconfirmed and must not be treated as proof of this parser
-mechanism.
+five reports assigned to tickets #3 and #4 remain unconfirmed and are outside this ticket's
+problem coverage.
 
 ## Verification
 

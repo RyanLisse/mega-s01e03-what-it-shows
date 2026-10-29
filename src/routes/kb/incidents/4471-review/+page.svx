@@ -31,19 +31,20 @@ The current table routes every report through `causeOf`. That function groups re
 tenant's locale, form version, and channel. It does not inspect the report body. The table
 therefore places the temporal anomalies under `parser` and footnotes them there.
 
-The tickets preserve the desk's exported classification. The temporal investigation overlaps
-the parser ticket. Separating those reports for evidence assessment does not change the desk's
-count or establish a new root cause.
+The table preserves the desk's exported classification of 379 parser and 33 hint reports. The
+two investigation tickets remove five reports from the parser ticket's problem coverage. The
+four tickets therefore cover `374 + 33 + 4 + 1 = 412` unique reports without overlap. The
+classification does not establish a root cause for every report.
 
 ## The four tickets
 
 ### The shared parser reads day-first dates as month-first
 
-The [parser ticket](https://github.com/RyanLisse/mega-s01e03-what-it-shows/issues/1) uses the
-desk's exported parser count, including its unresolved temporal footnote. It spans app, email,
-and form channels. The supported reversal mechanism is a day-first tenant reaching the shared
-month-first parser. After the five footnoted reports are separated, 374 reports remain
-classified as parser. That classification does not prove the mechanism for every report.
+The [parser ticket](https://github.com/RyanLisse/mega-s01e03-what-it-shows/issues/1) covers the
+374 reports left after the five footnoted reports move to investigations #3 and #4. These
+reports remain classified as parser across app, email, and form channels. The example reports
+support a day-first tenant reaching the shared month-first parser. The classification does not
+prove that mechanism for every report.
 
 ### Booking v3 gives a month-first hint to day-first tenants
 
@@ -58,7 +59,7 @@ Four of the report IDs marked for special reading describe an apparent one-day o
 symptom. The export does not establish their cause.
 
 The [date-boundary investigation](https://github.com/RyanLisse/mega-s01e03-what-it-shows/issues/3)
-tracks these four reports. They are already counted in the parser ticket. Split this ticket
+tracks these four reports. They appear in the archived desk parser row, but only this investigation covers them. Split this ticket
 again if runtime evidence shows more than one cause.
 
 ### An invite arrived before its booking existed
@@ -67,7 +68,7 @@ again if runtime evidence shows more than one cause.
 different from a one-day shift and a day-and-month reversal.
 
 The [ordering investigation](https://github.com/RyanLisse/mega-s01e03-what-it-shows/issues/4)
-tracks this report. It is already counted in the parser ticket. The export does not establish
+tracks this report. It appears in the archived desk parser row, but only this investigation covers it. The export does not establish
 whether the invite was generated early, delivered out of order, or linked to the wrong booking.
 
 ## Why subject matching merged different problems
