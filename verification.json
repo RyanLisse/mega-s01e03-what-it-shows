@@ -4,7 +4,6 @@
     "unique": 412,
     "duplicateRows": 15,
     "structuralParser": 379,
-    "parser": 374,
     "hint": 33,
     "oneDayTemporal": 4,
     "orderingTemporal": 1,
@@ -22,7 +21,7 @@
   ],
   "htmlChecks": {
     "index": {
-      "bytes": 4605,
+      "bytes": 4604,
       "title": "Support knowledge base"
     },
     "triage": {
@@ -38,14 +37,14 @@
       "title": "#4471 · dates parse mm/dd in eu locales"
     },
     "review": {
-      "bytes": 22329,
-      "title": "#4471 review · four date problems"
+      "bytes": 21523,
+      "title": "#4471 review · two date problems"
     }
   },
   "semanticChecks": {
     "incidentCauseTable": true,
     "temporalFootnote": true,
-    "reviewDeskCountsWithTwoTemporalProblems": true,
+    "reviewTwoProblemRowsWithFiveAnomalyFootnotes": true,
     "signedReview": true,
     "signatureMatchesFrontmatter": true,
     "staleTriageAndDecision": true

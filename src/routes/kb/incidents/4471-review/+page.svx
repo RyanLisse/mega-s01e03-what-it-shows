@@ -1,6 +1,6 @@
 ---
 layout: runbook
-title: '#4471 review · four date problems'
+title: '#4471 review · two date problems'
 owner: RyanLisse
 status: review
 reviewed: 2026-10-28
@@ -18,8 +18,8 @@ signature: 'RyanLisse · Codex · S01E03 · 2026-10-28'
 </script>
 
 The [incident page](/kb/incidents/4471) says every report belongs to one parser bug. The
-exported data supports four tickets. Two have a known mechanism. Two need investigation
-before anyone names a cause.
+exported data supports two problem tickets. Five reports need more evidence, but they do not
+establish another problem.
 
 <Findings />
 
@@ -31,20 +31,19 @@ The current table routes every report through `causeOf`. That function groups re
 tenant's locale, form version, and channel. It does not inspect the report body. The table
 therefore places the temporal anomalies under `parser` and footnotes them there.
 
-The table preserves the desk's exported classification of 379 parser and 33 hint reports. The
-two investigation tickets remove five reports from the parser ticket's problem coverage. The
-four tickets therefore cover `374 + 33 + 4 + 1 = 412` unique reports without overlap. The
-classification does not establish a root cause for every report.
+The table preserves the desk's exported classification of 379 parser and 33 hint reports.
+Together, those two groups cover all 412 unique reports. The parser group includes five
+reports that the desk footnotes for further investigation. The classification does not prove a
+new cause for those five reports.
 
-## The four tickets
+## The two problem tickets
 
 ### The shared parser reads day-first dates as month-first
 
-The [parser ticket](https://github.com/RyanLisse/mega-s01e03-what-it-shows/issues/1) covers the
-374 reports left after the five footnoted reports move to investigations #3 and #4. These
-reports remain classified as parser across app, email, and form channels. The example reports
-support a day-first tenant reaching the shared month-first parser. The classification does not
-prove that mechanism for every report.
+The [parser ticket](https://github.com/RyanLisse/mega-s01e03-what-it-shows/issues/1) covers 379
+reports across app, email, and form channels. The example reports support a day-first tenant
+reaching the shared month-first parser. Five unusual reports remain counted here and footnoted
+because the export does not establish another cause.
 
 ### Booking v3 gives a month-first hint to day-first tenants
 
@@ -53,23 +52,17 @@ reports from day-first tenants that use `booking-v3`. The form tells
 people to enter `MM/DD/YYYY`, then the product reads the date in the tenant's day-first
 locale. The hint and the parser disagree.
 
-### Four date-boundary anomalies need their own investigation
+## Five reports needing further investigation
 
-Four of the report IDs marked for special reading describe an apparent one-day or time-zone
-symptom. The export does not establish their cause.
+- `R-41202` says the invite and calendar differed by one day.
+- `R-41209` says June bookings were one day off.
+- `R-41236` says the invite arrived before the booking existed.
+- `R-41344` says recipients in Lisbon and Toronto received different weekdays.
+- `R-41620` says Tuesday 6 October appeared as Monday.
 
-The [date-boundary investigation](https://github.com/RyanLisse/mega-s01e03-what-it-shows/issues/3)
-tracks these four reports. They appear in the archived desk parser row, but only this investigation covers them. Split this ticket
-again if runtime evidence shows more than one cause.
-
-### An invite arrived before its booking existed
-
-`R-41236` reports that an invite arrived before the booking existed. This ordering symptom is
-different from a one-day shift and a day-and-month reversal.
-
-The [ordering investigation](https://github.com/RyanLisse/mega-s01e03-what-it-shows/issues/4)
-tracks this report. It appears in the archived desk parser row, but only this investigation covers it. The export does not establish
-whether the invite was generated early, delivered out of order, or linked to the wrong booking.
+The desk counts these reports where they are filed and footnotes them. Their bodies do not
+confirm a separate cause. Runtime timestamps and delivery records are needed before the desk
+can identify another problem.
 
 ## Why subject matching merged different problems
 
@@ -87,8 +80,8 @@ Its five cases show the mismatch:
 - Reports for an unknown tenant have no supported cause, even when their subjects match.
 
 Keep decision 0001 as history. Replace it with a new decision that merges only after the desk
-has evidence that two reports share a cause. Put reports with insufficient evidence in an
-investigation ticket.
+has evidence that two reports share a cause. Footnote uncertain reports under the supported
+cause. Create another ticket only when evidence establishes another problem.
 
 ## The queue kept moving
 

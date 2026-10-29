@@ -72,7 +72,6 @@ try {
     unique: unique.length,
     duplicateRows: duplicates.length,
     structuralParser: structural.filter(({ cause }) => cause === 'parser').length,
-    parser: structural.filter(({ report, cause }) => cause === 'parser' && !temporal.has(report.id)).length,
     hint: structural.filter(({ cause }) => cause === 'hint').length,
     oneDayTemporal: unique.filter(({ id }) => oneDayMove.has(id)).length,
     orderingTemporal: unique.filter(({ id }) => id === orderingReportId).length,
@@ -93,7 +92,6 @@ try {
     unique: 412,
     duplicateRows: 15,
     structuralParser: 379,
-    parser: 374,
     hint: 33,
     oneDayTemporal: 4,
     orderingTemporal: 1,
@@ -103,7 +101,11 @@ try {
   });
   assert.equal(duplicateObjectsMatch, true);
   assert.equal(counts.oneDayTemporal + counts.orderingTemporal, counts.temporal);
-  assert.equal(counts.parser + counts.hint + counts.temporal, counts.unique);
+  assert.equal(counts.structuralParser + counts.hint, counts.unique);
+  assert.equal(
+    structural.filter(({ report, cause }) => temporal.has(report.id) && cause === 'parser').length,
+    counts.temporal,
+  );
   assert.deepEqual(dedupeOutcomes, [true, false, false, true, false]);
 
   const renderedDir = path.join(outputRoot, 'rendered');
@@ -129,13 +131,16 @@ try {
   assert.match(incidentHtml, /<code[^>]*>parser<\/code>[\s\S]*?<td[^>]*>379<\/td>/);
   assert.match(incidentHtml, /<code[^>]*>hint<\/code>[\s\S]*?<td[^>]*>33<\/td>/);
   assert.match(incidentHtml, /5 reports read as a one-day move/);
-  assert.match(reviewHtml, /<td[^>]*>379<\/td>[\s\S]*?<td[^>]*>33<\/td>[\s\S]*?<td[^>]*>4<\/td>[\s\S]*?<td[^>]*>1<\/td>/);
-  assert.match(reviewHtml, /desk notes mark five temporal reports:[\s\S]*?4 apparent one-day[\s\S]*?moves and one ordering report/i);
-  assert.match(reviewHtml, /both groups overlap parser; they are not five more reports/i);
-  assert.match(reviewHtml, /remaining 374 reports are classified[\s\S]*?parser/i);
+  const problemTable = reviewHtml.match(/<table[^>]*data-problem-table[^>]*>[\s\S]*?<tbody[^>]*>([\s\S]*?)<\/tbody>/);
+  assert.ok(problemTable, 'review problem table missing');
+  assert.equal((problemTable[1].match(/<tr\b/g) ?? []).length, 2);
+  assert.match(problemTable[1], /<td[^>]*>parser<\/td>[\s\S]*?<td[^>]*>379<\/td>/);
+  assert.match(problemTable[1], /booking-v3 gives a month-first hint to day-first tenants[\s\S]*?<td[^>]*>33<\/td>/);
+  assert.match(reviewHtml, /desk notes flag five reports already counted in parser/i);
+  assert.match(reviewHtml, /not additional causes or problem tickets/i);
   assert.match(reviewHtml, /R-41202, R-41209, R-41344, R-41620/);
-  assert.match(reviewHtml, /ordering report ID is R-41236/);
-  assert.equal(htmlChecks.review.title, '#4471 review · four date problems');
+  assert.match(reviewHtml, /R-41236 says the invite arrived before the booking existed/i);
+  assert.equal(htmlChecks.review.title, '#4471 review · two date problems');
   assert.match(reviewHtml, new RegExp(`desk ref <b[^>]*>${expectedReviewRef}<\\/b>`));
   assert.match(triageHtml, /\d+ days ago · stale/);
   assert.match(decisionHtml, /\d+ days ago · stale/);
@@ -148,7 +153,7 @@ try {
     semanticChecks: {
       incidentCauseTable: true,
       temporalFootnote: true,
-      reviewDeskCountsWithTwoTemporalProblems: true,
+      reviewTwoProblemRowsWithFiveAnomalyFootnotes: true,
       signedReview: true,
       signatureMatchesFrontmatter: true,
       staleTriageAndDecision: true,
