@@ -31,20 +31,23 @@ The current table routes every report through `causeOf`. That function groups re
 tenant's locale, form version, and channel. It does not inspect the report body. The table
 therefore places the temporal anomalies under `parser` and footnotes them there.
 
-The review separates those anomalies from the supported parser group. This is an evidence
-boundary, not a new root-cause claim.
+The tickets preserve the desk's exported classification. The temporal investigation overlaps
+the parser ticket. Separating those reports for evidence assessment does not change the desk's
+count or establish a new root cause.
 
 ## The three tickets
 
 ### The shared parser reads day-first dates as month-first
 
-This group covers the reports whose dates swap the day and month. It spans app, email, and
-form channels. The mechanism matches `causeOf`: a day-first tenant reaches the shared
-month-first parser.
+The [parser ticket](https://github.com/RyanLisse/mega-s01e03-what-it-shows/issues/1) uses the
+desk's exported parser count, including its unresolved temporal footnote. It spans app, email,
+and form channels. The supported reversal mechanism is a day-first tenant reaching the shared
+month-first parser. The temporal reports remain unconfirmed.
 
 ### Booking v3 gives a month-first hint to day-first tenants
 
-This group covers form reports from day-first tenants that use `booking-v3`. The form tells
+The [hint ticket](https://github.com/RyanLisse/mega-s01e03-what-it-shows/issues/2) covers form
+reports from day-first tenants that use `booking-v3`. The form tells
 people to enter `MM/DD/YYYY`, then the product reads the date in the tenant's day-first
 locale. The hint and the parser disagree.
 
@@ -54,8 +57,9 @@ The desk marked five report IDs for special reading. Four describe an apparent o
 time-zone symptom. `R-41236` says an invite arrived before the booking existed. That symptom
 does not establish the same failure mechanism.
 
-Keep these reports together only as an investigation queue. Split the ticket again if runtime
-evidence shows more than one cause.
+The [temporal investigation](https://github.com/RyanLisse/mega-s01e03-what-it-shows/issues/3)
+tracks reports already counted in the parser ticket. Keep them together only as an investigation
+queue. Split the ticket again if runtime evidence shows more than one cause.
 
 ## Why subject matching merged different problems
 

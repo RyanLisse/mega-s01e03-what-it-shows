@@ -122,7 +122,9 @@ try {
   assert.match(incidentHtml, /<code[^>]*>parser<\/code>[\s\S]*?<td[^>]*>379<\/td>/);
   assert.match(incidentHtml, /<code[^>]*>hint<\/code>[\s\S]*?<td[^>]*>33<\/td>/);
   assert.match(incidentHtml, /5 reports read as a one-day move/);
-  assert.match(reviewHtml, /<td[^>]*>374<\/td>[\s\S]*?<td[^>]*>33<\/td>[\s\S]*?<td[^>]*>5<\/td>/);
+  assert.match(reviewHtml, /<td[^>]*>379<\/td>[\s\S]*?<td[^>]*>33<\/td>[\s\S]*?<td[^>]*>5<\/td>/);
+  assert.match(reviewHtml, /five temporal reports overlap parser; they are not five more reports/i);
+  assert.match(reviewHtml, /374 parser reports support the parser mechanism/);
   assert.match(reviewHtml, new RegExp(`desk ref <b[^>]*>${expectedReviewRef}<\\/b>`));
   assert.match(triageHtml, /\d+ days ago · stale/);
   assert.match(decisionHtml, /\d+ days ago · stale/);
@@ -135,7 +137,7 @@ try {
     semanticChecks: {
       incidentCauseTable: true,
       temporalFootnote: true,
-      reviewPartition: true,
+      reviewDeskCountsWithTemporalOverlap: true,
       signedReview: true,
       signatureMatchesFrontmatter: true,
       staleTriageAndDecision: true,

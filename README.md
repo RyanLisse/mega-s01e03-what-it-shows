@@ -2,7 +2,7 @@
 
 This repository preserves the supplied support knowledge-base export and adds a signed review of ticket #4471.
 
-The review separates 374 parser reports, 33 booking-hint reports, and five unresolved temporal reports. Those groups cover all 412 unique reports in the 4 October 2026 snapshot.
+The tickets use the desk's exported counts of 379 parser reports and 33 booking-hint reports. A third ticket investigates five temporal reports already included in the parser count. Do not add those five again. The snapshot has 412 unique reports; 374 parser reports remain after separating the unresolved five for evidence assessment.
 
 - Read the [review source](src/routes/kb/incidents/4471-review/+page.svx).
 - Open the [rendered review](rendered/review.html) in a browser. This file is a static snapshot without client-side interaction.

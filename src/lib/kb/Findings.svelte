@@ -8,11 +8,13 @@
   const unique = uniqueById(rows);
   const temporal = new Set(notes.oneDayMove);
   const structural = unique.map((report) => ({ report, cause: causeOf(report, tenantOf(report)) }));
+  const parser = structural.filter(({ cause }) => cause === 'parser');
+  const supportedParser = parser.filter(({ report }) => !temporal.has(report.id)).length;
   const buckets = [
     {
-      problem: 'shared parser reads day-first dates as month-first',
-      reports: structural.filter(({ report, cause }) => cause === 'parser' && !temporal.has(report.id)).length,
-      status: 'mechanism supported',
+      problem: 'parser',
+      reports: parser.length,
+      status: 'desk cause; includes five temporal reports',
     },
     {
       problem: 'booking-v3 gives a month-first hint to day-first tenants',
@@ -22,7 +24,7 @@
     {
       problem: 'temporal anomalies hidden under parser',
       reports: unique.filter((report) => temporal.has(report.id)).length,
-      status: 'cause unknown',
+      status: 'overlaps parser; cause unknown',
     },
   ];
   const tagMismatches = structural.filter(({ report, cause }) => cause !== report.meta.intakeTag).length;
@@ -44,8 +46,11 @@
 </table>
 
 <p class="note">
+  The desk's cause counts are {parser.length} parser plus {buckets[1].reports} hint, which equals
+  {unique.length}. The five temporal reports overlap parser; they are not five more reports.
+  {supportedParser} parser reports support the parser mechanism, while five need investigation.
   Intake tags disagree with the structural route for {tagMismatches} reports. The desk merged
-  {julyBatch} reports on 2 July. The five temporal reports are {notes.oneDayMove.join(', ')}.
+  {julyBatch} reports on 2 July. The temporal report IDs are {notes.oneDayMove.join(', ')}.
 </p>
 
 <style>

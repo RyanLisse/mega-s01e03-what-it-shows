@@ -36,14 +36,14 @@
       "title": "#4471 · dates parse mm/dd in eu locales"
     },
     "review": {
-      "bytes": 20556,
+      "bytes": 21308,
       "title": "#4471 review · three date problems"
     }
   },
   "semanticChecks": {
     "incidentCauseTable": true,
     "temporalFootnote": true,
-    "reviewPartition": true,
+    "reviewDeskCountsWithTemporalOverlap": true,
     "signedReview": true,
     "signatureMatchesFrontmatter": true,
     "staleTriageAndDecision": true
