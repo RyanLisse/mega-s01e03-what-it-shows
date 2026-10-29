@@ -18,6 +18,13 @@ Examples include:
 The evidence comes from `src/lib/data/reports-4471.json`, the tenant records under
 `src/lib/data/tenants`, and the `DATE_HINT` and `causeOf` rules in `src/lib/kb/causes.ts`.
 
+## Resolution
+
+The [course update](https://hq.mega.dev/challenges/what-it-shows) records this ticket as won't
+fix and closed on 5 October 2026 because the `booking-v3` form was retired.
+
+This repository documents the desk's resolution. It did not retire the form.
+
 ## Mechanism
 
 All three affected tenants use a day-first locale and `booking-v3`. `DATE_HINT` assigns
@@ -32,5 +39,5 @@ All three affected tenants use a day-first locale and `booking-v3`. `DATE_HINT` 
 
 ## Uncertainty
 
-This count describes the exported snapshot. It does not prove the current production state or
-show whether a fix has been deployed.
+This count describes the 4 October export. The later desk resolution records the form as
+retired, but the supplied files do not verify its production state.

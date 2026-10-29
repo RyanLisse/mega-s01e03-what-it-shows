@@ -21,7 +21,7 @@
   ],
   "htmlChecks": {
     "index": {
-      "bytes": 4604,
+      "bytes": 4606,
       "title": "Support knowledge base"
     },
     "triage": {
@@ -37,7 +37,7 @@
       "title": "#4471 · dates parse mm/dd in eu locales"
     },
     "review": {
-      "bytes": 21523,
+      "bytes": 22114,
       "title": "#4471 review · two date problems"
     }
   },

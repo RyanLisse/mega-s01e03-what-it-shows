@@ -7,6 +7,12 @@ booking-hint reports. The parser count includes five unusual reports that need m
 The desk counts them where they are filed and footnotes them. They do not establish another
 problem. The two ticket counts cover all 412 unique reports.
 
+The [course update](https://hq.mega.dev/challenges/what-it-shows) records both desk
+resolutions on 5 October 2026. The parser ticket closed as fixed after
+`fix(dates): parse dd/mm for eu locales`. The hint ticket closed as won't fix because the
+`booking-v3` form was retired. These resolutions are newer than the 4 October export. This
+repository did not deploy the parser change or retire the form.
+
 - Read the [review source](src/routes/kb/incidents/4471-review/+page.svx).
 - Open the [rendered review](rendered/review.html) in a browser. This file is a static snapshot without client-side interaction.
 - Read the [parser ticket draft](issue-drafts/parser.md).
@@ -30,7 +36,8 @@ node scripts/render.mjs . /path/to/toolchain-project
 
 The verified toolchain uses Svelte 5.57.2, mdsvex 0.12.8, Vite 8.3.4, and `@sveltejs/vite-plugin-svelte`. The command writes `rendered/*.html` and `verification.json`. It checks the report partition, deduplication examples, signature, and stale warnings.
 
-These deliverables document the exported evidence. They contain no production fix and do not prove current service behavior.
+These deliverables document the exported evidence and the later desk resolutions. They
+contain no production fix and do not prove current service behavior.
 
 ## Original export documentation
 

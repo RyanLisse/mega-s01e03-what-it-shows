@@ -20,6 +20,14 @@ Examples include:
 The evidence comes from `src/lib/data/reports-4471.json`, the tenant records under
 `src/lib/data/tenants`, and `src/lib/kb/causes.ts`.
 
+## Resolution
+
+The [course update](https://hq.mega.dev/challenges/what-it-shows) records this ticket as fixed
+and closed on 5 October 2026. The desk names the change
+`fix(dates): parse dd/mm for eu locales`.
+
+This repository documents the desk's resolution. It did not implement or deploy the change.
+
 ## Mechanism
 
 The example reports show the shared date reader swapping day and month for day-first input.
@@ -48,5 +56,5 @@ desk can identify another problem.
 
 ## Uncertainty
 
-This count describes the exported snapshot. It does not prove the current production state or
-show whether a fix has been deployed.
+This count describes the 4 October export. The later desk resolution records the ticket as
+fixed, but the supplied files do not verify production deployment.
