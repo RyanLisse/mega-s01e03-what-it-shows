@@ -3,7 +3,7 @@
 ## Problem
 
 Four reports describe timing behavior that the day-and-month classification does not explain.
-The export routes them to `parser`, but their bodies do not establish that cause.
+The cause remains unknown.
 
 ## Reports covered
 
@@ -19,9 +19,7 @@ The related records are in `src/lib/data/reports-4471.json`.
 
 ## Current evidence
 
-`CauseTable` assigns all four reports to `parser` because `causeOf` uses the tenant, locale,
-form, and channel. It does not inspect the reported timing behavior. The bodies are compatible
-with a time-zone or date-boundary defect, but the export does not establish either cause.
+The four bodies describe event dates appearing on adjacent days. The export does not establish the cause.
 
 ## Investigation and verification
 

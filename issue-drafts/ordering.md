@@ -12,9 +12,6 @@ The related record is in `src/lib/data/reports-4471.json`.
 
 ## Current evidence
 
-`CauseTable` assigns the report to `parser` because `causeOf` uses the tenant, locale, form,
-and channel. It does not inspect when the booking and invite were created or delivered.
-
 The export does not establish whether the system generated the invite early, delivered it out
 of order, or linked it to the wrong booking.
 
