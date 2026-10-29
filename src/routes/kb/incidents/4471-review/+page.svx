@@ -4,7 +4,7 @@ title: '#4471 review · two date problems'
 owner: RyanLisse
 status: resolved
 reviewed: 2026-10-29
-signature: 'RyanLisse · Codex · S01E03 · 2026-10-29'
+signature: 'v1.eyJzdWIiOiIyMzE5IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMzMTA2NDEsImV4cCI6MTc5MzM5NzA0MX0.Sbn5CQGmYtZEzf0A5-XLlx6Pqox7Wf6hXROFpTVMZk4'
 ---
 
 <script>
@@ -14,7 +14,7 @@ signature: 'RyanLisse · Codex · S01E03 · 2026-10-29'
   import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
 
-  const signature = 'RyanLisse · Codex · S01E03 · 2026-10-29';
+  const signature = 'v1.eyJzdWIiOiIyMzE5IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMzMTA2NDEsImV4cCI6MTc5MzM5NzA0MX0.Sbn5CQGmYtZEzf0A5-XLlx6Pqox7Wf6hXROFpTVMZk4';
 </script>
 
 The [incident page](/kb/incidents/4471) says every report belongs to one parser bug. The
