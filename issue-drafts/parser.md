@@ -10,7 +10,7 @@ swap the day and month for tenants that use a day-first locale.
 This problem ticket covers 374 unique reports in the 4 October export. The archived desk view
 classifies 379 reports as parser. That row includes five reports now assigned only to
 investigation tickets #3 and #4. The remaining 374 are classified as parser, but that
-classification is not body-by-body proof of one root cause. The 33 hint reports are separate.
+classification is not body-by-body proof of one root cause.
 
 Examples include:
 
@@ -23,8 +23,7 @@ The evidence comes from `src/lib/data/reports-4471.json`, the tenant records und
 
 ## Mechanism
 
-`causeOf` classifies a report as `parser` when the tenant uses a day-first locale and the
-booking-v3 hint mismatch does not apply. The example reports show the day-and-month swap. The
+The example reports show the shared date reader swapping day and month for day-first input. The
 five reports assigned to tickets #3 and #4 remain unconfirmed and are outside this ticket's
 problem coverage.
 

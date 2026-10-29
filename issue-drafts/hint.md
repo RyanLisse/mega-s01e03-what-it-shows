@@ -2,9 +2,7 @@
 
 ## Problem
 
-`booking-v3` shows `MM/DD/YYYY` to people booking with day-first tenants. The form then reads
-the submitted date using the tenant's day-first locale, so the visible hint and the parser
-disagree.
+`booking-v3` shows `MM/DD/YYYY` to people booking with day-first tenants. The displayed format conflicts with the tenant's day-first entry convention.
 
 ## Reports covered
 
