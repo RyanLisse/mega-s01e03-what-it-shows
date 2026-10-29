@@ -2,13 +2,18 @@
 
 This repository preserves the supplied support knowledge-base export and adds a signed review of ticket #4471.
 
-The tickets use the desk's exported counts of 379 parser reports and 33 booking-hint reports. A third ticket investigates five temporal reports already included in the parser count. Do not add those five again. The snapshot has 412 unique reports; 374 parser reports remain after separating the unresolved five for evidence assessment.
+The tickets use the desk's exported counts of 379 parser reports and 33 booking-hint reports.
+A third ticket investigates four date-boundary reports. A fourth investigates one
+invite-ordering report. All five are already included in the parser count, so do not add them
+again. The snapshot has 412 unique reports. After separating the unresolved five, 374 reports
+remain classified as parser. That classification does not prove one cause for every report.
 
 - Read the [review source](src/routes/kb/incidents/4471-review/+page.svx).
 - Open the [rendered review](rendered/review.html) in a browser. This file is a static snapshot without client-side interaction.
 - Read the [parser ticket draft](issue-drafts/parser.md).
 - Read the [hint ticket draft](issue-drafts/hint.md).
-- Read the [temporal investigation draft](issue-drafts/temporal.md).
+- Read the [date-boundary investigation draft](issue-drafts/temporal.md).
+- Read the [invite-ordering investigation draft](issue-drafts/ordering.md).
 - Inspect the [verification results](verification.json).
 
 The source page uses the existing knowledge-base components. It recalculates its tables when rendered against the export. The original incident page and accepted decision are preserved as evidence.

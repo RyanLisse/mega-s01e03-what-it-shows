@@ -1,6 +1,6 @@
 ---
 layout: runbook
-title: '#4471 review · three date problems'
+title: '#4471 review · four date problems'
 owner: RyanLisse
 status: review
 reviewed: 2026-10-28
@@ -18,8 +18,8 @@ signature: 'RyanLisse · Codex · S01E03 · 2026-10-28'
 </script>
 
 The [incident page](/kb/incidents/4471) says every report belongs to one parser bug. The
-exported data supports three tickets. Two have a known mechanism. The third holds temporal
-anomalies that need investigation before anyone names a cause.
+exported data supports four tickets. Two have a known mechanism. Two need investigation
+before anyone names a cause.
 
 <Findings />
 
@@ -35,14 +35,15 @@ The tickets preserve the desk's exported classification. The temporal investigat
 the parser ticket. Separating those reports for evidence assessment does not change the desk's
 count or establish a new root cause.
 
-## The three tickets
+## The four tickets
 
 ### The shared parser reads day-first dates as month-first
 
 The [parser ticket](https://github.com/RyanLisse/mega-s01e03-what-it-shows/issues/1) uses the
 desk's exported parser count, including its unresolved temporal footnote. It spans app, email,
 and form channels. The supported reversal mechanism is a day-first tenant reaching the shared
-month-first parser. The temporal reports remain unconfirmed.
+month-first parser. After the five footnoted reports are separated, 374 reports remain
+classified as parser. That classification does not prove the mechanism for every report.
 
 ### Booking v3 gives a month-first hint to day-first tenants
 
@@ -51,15 +52,23 @@ reports from day-first tenants that use `booking-v3`. The form tells
 people to enter `MM/DD/YYYY`, then the product reads the date in the tenant's day-first
 locale. The hint and the parser disagree.
 
-### Temporal anomalies need their own investigation
+### Four date-boundary anomalies need their own investigation
 
-The desk marked five report IDs for special reading. Four describe an apparent one-day or
-time-zone symptom. `R-41236` says an invite arrived before the booking existed. That symptom
-does not establish the same failure mechanism.
+Four of the report IDs marked for special reading describe an apparent one-day or time-zone
+symptom. The export does not establish their cause.
 
-The [temporal investigation](https://github.com/RyanLisse/mega-s01e03-what-it-shows/issues/3)
-tracks reports already counted in the parser ticket. Keep them together only as an investigation
-queue. Split the ticket again if runtime evidence shows more than one cause.
+The [date-boundary investigation](https://github.com/RyanLisse/mega-s01e03-what-it-shows/issues/3)
+tracks these four reports. They are already counted in the parser ticket. Split this ticket
+again if runtime evidence shows more than one cause.
+
+### An invite arrived before its booking existed
+
+`R-41236` reports that an invite arrived before the booking existed. This ordering symptom is
+different from a one-day shift and a day-and-month reversal.
+
+The [ordering investigation](https://github.com/RyanLisse/mega-s01e03-what-it-shows/issues/4)
+tracks this report. It is already counted in the parser ticket. The export does not establish
+whether the invite was generated early, delivered out of order, or linked to the wrong booking.
 
 ## Why subject matching merged different problems
 
